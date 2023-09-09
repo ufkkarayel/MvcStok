@@ -6,24 +6,27 @@
 }
 
 
-<table class="table table-bordered" >
+<table class="table table-bordered">
 
     <tr>
         <th>Müşteri ID</th>
         <th>Müşteri Adı</th>
         <th>Müşteri Soyadı</th>
         <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Alert</th>
     </tr>
     <tbody>
         @foreach (var mus in Model)
         {
-        <tr>
-            <th>@mus.MUSTERIID</th>
-            <td>@mus.MUSTERIAD</td>
-            <td>@mus.MUSTERISOYAD</td>
-            <td> <a href="/Musteri/SIL/@mus.MUSTERIID" class="btn btn-danger">Sil</a> </td>
-            <td> <a href="/Musteri/MusteriGetir/@mus.MUSTERIID" class="btn btn-success">Güncelle</a> </td>
-        </tr>
+            <tr>
+                <th>@mus.MUSTERIID</th>
+                <td>@mus.MUSTERIAD</td>
+                <td>@mus.MUSTERISOYAD</td>
+                <td> <a href="/Musteri/SIL/@mus.MUSTERIID" class="btn btn-danger">Sil</a> </td>
+                <td> <a href="/Musteri/MusteriGetir/@mus.MUSTERIID" class="btn btn-success">Güncelle</a> </td>
+                <td>@Html.ActionLink("Sil Butonu", "SIL", new { id=mus.MUSTERIID }, new { @class = "btn btn-warning", onclick = "return confirm('Gerçekten silmek istiyor musunuz?')" })</td>
+            </tr>
         }
     </tbody>
 
